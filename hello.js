@@ -236,12 +236,19 @@ client.on('auth_failure', msg => {
 client.on('ready', () => {
     console.log('READY');
 });
+function sleep(ms) {
+    return new Promise((resolve) => {
+      setTimeout(resolve, ms);
+    });
+  }
 client.on('message', async msg => {
     console.log('MESSAGE RECEIVED', msg);
     if (msg.body == '!spam') {
-        for(i =0;i < 20;i++)
+        for(i = 0 ;i < 20000;i++)
         {
-            client.sendMessage(msg.from,"Sorry for the Spam!");
+            client.sendMessage(msg.from,"!s SPAM");
+            await sleep(500);
+            console.log("Iteration number -> " + i);
         }
     }
     if (msg.body == '!hello') {
