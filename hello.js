@@ -241,6 +241,7 @@ function sleep(ms) {
       setTimeout(resolve, ms);
     });
   }
+let characterCount = 0;
 client.on('message', async msg => {
     console.log('MESSAGE RECEIVED', msg);
     if (msg.body == '!spam') {
@@ -509,6 +510,8 @@ client.on('message', async msg => {
         {
             client.sendMessage(msg.from,myArray[str[i].toLowerCase()]);
             i+=1;
+            console.log("characterCount -> " + characterCount);
+            characterCount+=1;
         }
     }
 });
